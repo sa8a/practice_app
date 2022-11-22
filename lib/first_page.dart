@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practice_app/second_page.dart';
+import 'package:go_router/go_router.dart';
 
 class FirstPage extends StatelessWidget {
   const FirstPage({super.key});
@@ -9,14 +9,23 @@ class FirstPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('ファースト')),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const SecondPage()),
-            );
-          },
-          child: const Text('次の画面へ'),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                context.push('/second');
+              },
+              child: const Text('次の画面へ'),
+            ),
+            const SizedBox(width: 20),
+            ElevatedButton(
+              onPressed: () {
+                context.go('/third');
+              },
+              child: const Text('最後の画面へ'),
+            ),
+          ],
         ),
       ),
     );

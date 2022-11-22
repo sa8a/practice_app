@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class SecondPage extends StatelessWidget {
-  const SecondPage({super.key});
+class ThirdPage extends StatelessWidget {
+  const ThirdPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('セカンド'),
-        backgroundColor: Colors.red,
+        title: const Text('サード'),
+        backgroundColor: Colors.green,
       ),
       body: Center(
         child: Row(
@@ -20,19 +20,19 @@ class SecondPage extends StatelessWidget {
                 context.pop();
               },
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.red),
+                backgroundColor: MaterialStateProperty.all(Colors.green),
               ),
               child: const Text('前の画面へ'),
             ),
             const SizedBox(width: 20),
             ElevatedButton(
               onPressed: () {
-                context.push('/third');
+                context.go('/first');
               },
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.red),
+                backgroundColor: MaterialStateProperty.all(Colors.green),
               ),
-              child: const Text('次の画面へ'),
+              child: const Text('最初の画面へ'),
             ),
           ],
         ),
