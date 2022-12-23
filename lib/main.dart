@@ -64,6 +64,18 @@ class HomePage extends ConsumerWidget {
       inactiveColor: Colors.black,
     );
 
+    // レンジスライダー
+    final range = ref.watch(rangeProvider);
+    final rangeSlider = RangeSlider(
+      values: range,
+      onChanged: (range) {
+        ref.read(rangeProvider.notifier).state = range;
+        print(range);
+      },
+      activeColor: Colors.green,
+      inactiveColor: Colors.black,
+    );
+
     return Scaffold(
       body: Center(
         child: Column(
@@ -71,6 +83,7 @@ class HomePage extends ConsumerWidget {
           children: [
             toggleSwitch,
             slider,
+            rangeSlider,
           ],
         ),
       ),
