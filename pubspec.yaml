@@ -8,6 +8,7 @@ environment:
 
 dependencies:
   go_router:
+  riverpod: ^2.1.1
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
