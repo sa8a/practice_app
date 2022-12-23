@@ -64,6 +64,12 @@ class HomePage extends ConsumerWidget {
       inactiveColor: Colors.black,
     );
 
+    final redBox = Container(
+      color: Colors.red,
+      width: value * 300,
+      height: 50,
+    );
+
     // レンジスライダー
     final range = ref.watch(rangeProvider);
     final rangeSlider = RangeSlider(
@@ -83,6 +89,7 @@ class HomePage extends ConsumerWidget {
           children: [
             toggleSwitch,
             slider,
+            redBox,
             rangeSlider,
           ],
         ),
