@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
 }
 
 // トグルスイッチ
-final isOnProvaider = StateProvider((ref) {
+final isOnProvider = StateProvider((ref) {
   return true;
 });
 
@@ -38,23 +38,39 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isOn = ref.watch(isOnProvaider);
+    // トグルスイッチ
+    final isOn = ref.watch(isOnProvider);
     final toggleSwitch = Switch(
       value: isOn,
       onChanged: (isOn) {
-        ref.read(isOnProvaider.notifier).state = isOn;
+        ref.read(isOnProvider.notifier).state = isOn;
       },
       activeColor: Colors.blue,
       activeTrackColor: Colors.green,
       inactiveThumbColor: Colors.black,
       inactiveTrackColor: Colors.grey,
     );
+
+    // スライダー
+    final value = ref.watch(valueProvider);
+    final slider = Slider(
+      value: value,
+      onChanged: (value) {
+        ref.read(valueProvider.notifier).state = value;
+        print(value);
+      },
+      thumbColor: Colors.blue,
+      activeColor: Colors.green,
+      inactiveColor: Colors.black,
+    );
+
     return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             toggleSwitch,
+            slider,
           ],
         ),
       ),
