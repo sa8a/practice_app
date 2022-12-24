@@ -7,19 +7,20 @@ void main() {
 xxx() async {
   debugPrint('私は x です');
   debugPrint('y を await します');
-  await yyy();
-  debugPrint('y を await しました');
+  final data = await yyy();
+  debugPrint('y から受け取ったデータは $data');
 }
 
-Future yyy() async {
+Future<int> yyy() async {
   debugPrint('私は y です');
   debugPrint('z を await します');
-  await zzz();
-  debugPrint('z を await しました');
+  final data = await zzz();
+  debugPrint('z から受け取ったデータは $data');
+  return data;
 }
 
-Future zzz() {
+Future<int> zzz() {
   debugPrint('私は z です');
   debugPrint('通信中...しばらくお待ちください');
-  return Future.delayed(const Duration(seconds: 3));
+  return Future.delayed(const Duration(seconds: 3), () => 777);
 }
